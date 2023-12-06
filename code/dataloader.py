@@ -61,7 +61,7 @@ def get_test_Dataloader(input_folder, label_folder=None, batch_size=4):
 # ==========================
 # Helper Function
 # ==========================
-domain_list=['./FAZ/Domain1','./FAZ/Domain2','./FAZ/Domain3','./FAZ/Domain4','./FAZ/Domain5']
+domain_list=['../data/FAZ/Domain1','../data/FAZ/Domain2','../data/FAZ/Domain3','../data/FAZ/Domain4','../data/FAZ/Domain5']
 domain_list=domain_list
 input_folderL=[os.path.join(domain_list[i],'test/imgs') for i in range(len(domain_list))]
 label_folderL=[os.path.join(domain_list[i],'test/mask') for i in range(len(domain_list))]

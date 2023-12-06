@@ -1,10 +1,10 @@
 from dataloader import *
 from model import *
 
-input_folder = './FAZ/Domain1/train/imgs'
-label_folder = './FAZ/Domain1/train/mask'
-val_input_folder = './FAZ/Domain1/valid/imgs'
-val_label_folder = './FAZ/Domain1/valid/mask'
+input_folder = '../data/FAZ/Domain1/train/imgs'
+label_folder = '../data/FAZ/Domain1/train/mask'
+val_input_folder = '../data/FAZ/Domain1/valid/imgs'
+val_label_folder = '../data/FAZ/Domain1/valid/mask'
 train_data_loader = get_Domain1_Dataloader(input_folder=input_folder, 
                                   label_folder=label_folder, 
                                   batch_size=4)
