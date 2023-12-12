@@ -28,8 +28,6 @@ model.to(device,dtype=torch.float32)
 
 
 
-
-
 with torch.no_grad():
     
     # one domain at a time
