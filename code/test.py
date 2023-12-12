@@ -4,7 +4,7 @@ from model import *
 from torch.cuda.amp import autocast as autocast
 from medpy.metric import binary
 import torch
-domain_list=['./FAZ/Domain1','./FAZ/Domain2','./FAZ/Domain3','./FAZ/Domain4','./FAZ/Domain5']
+domain_list=['../data/FAZ/Domain1','../data/FAZ/Domain2','../data/FAZ/Domain3','../data/FAZ/Domain4','../data/FAZ/Domain5']
 domain_list=domain_list
 input_folderL=[os.path.join(domain_list[i],'test/imgs') for i in range(len(domain_list))]
 label_folderL=[os.path.join(domain_list[i],'test/mask') for i in range(len(domain_list))]
@@ -18,7 +18,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(device)
 
 
-save_path = './checkpoint/domain1_w_val4.pth'
+save_path = './checkpoint/domain1_0.7.pth'
 model_state = torch.load(save_path)
 
 model = UNet(in_channels=3, out_channels=1)
@@ -50,10 +50,10 @@ with torch.no_grad():
             diceScore = dice_coefficient(outputs, labels)
             dic_record.append(diceScore.cpu())
 
-            hdScore=binary.hd95(outputs.cpu().numpy(),labels.cpu().numpy())
+            hdScore=binary.hd95(outputs.cpu().numpy(), labels.cpu().numpy())
             hd95_record.append(hdScore)
 
-            assdScore=binary.assd(outputs.cpu().numpy(),labels.cpu().numpy())
+            assdScore=binary.assd(outputs.cpu().numpy(), labels.cpu().numpy())
             assd_record.append(assdScore)
 
             # show_result(inputs, outputs, labels)

@@ -5,7 +5,7 @@ import numpy as np
 import shutil
 
 import torch
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset, DataLoader, ConcatDataset
 from torchvision import transforms
 
 # ==========================
@@ -21,6 +21,7 @@ class FAZ_Dataset(Dataset):
         self.x_transform = transforms.Compose([
             transforms.ToTensor(),
         ])
+
     def __getitem__(self, index):
         input = Image.open(self.input_list[index])
         input = self.x_transform(input)
@@ -32,6 +33,7 @@ class FAZ_Dataset(Dataset):
             return input, label
         else:
             return input
+        
     def __len__(self):
         return len(self.input_list)
 
@@ -52,8 +54,16 @@ def get_test_Dataloader(input_folder, label_folder=None, batch_size=4):
 
     return dataloader
 
+def get_combined_Dataloader(input_folders, label_folder=None, batch_size=4):
+    datasets = []
+    for input_folder in input_folders:
+        dataset = FAZ_Dataset(input_folder=input_folder, label_folder=label_folder)
+        datasets.append(dataset)
 
+    combined_dataset = ConcatDataset(datasets)
+    dataloader = DataLoader(dataset=combined_dataset, batch_size=batch_size, shuffle=False) 
 
+    return dataloader
 
 
 

@@ -136,6 +136,7 @@ def trainer_w_val(train_loader, val_loader,model, optimizer, loss_fn, num_epochs
         for x, y in val_loader:
             x, y = x.to(device), y.to(device)
             with torch.no_grad():
+                
                 pred = model(x)
                 loss = loss_fn(pred, y)
                 loss_record.append(loss.item())
