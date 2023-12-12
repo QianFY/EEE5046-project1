@@ -10,9 +10,6 @@ input_folderL=[os.path.join(domain_list[i],'test/imgs') for i in range(len(domai
 label_folderL=[os.path.join(domain_list[i],'test/mask') for i in range(len(domain_list))]
 pred_folderL=[os.path.join(domain_list[i],'test/pred') for i in range(len(domain_list))]
 
-#label_folder='./FAZ/Domain1/test/mask'
-#input_folder='./FAZ/Domain1/test/imgs'
-#pred_folder='./FAZ/Domain1/test/pred'
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(device)
