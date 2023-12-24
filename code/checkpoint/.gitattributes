@@ -1,3 +1,4 @@
 domain1_0.3.pth filter=lfs diff=lfs merge=lfs -text
 domain1_0.5.pth filter=lfs diff=lfs merge=lfs -text
 *.pth filter=lfs diff=lfs merge=lfs -text
+domain1_0.1.pth filter=lfs diff=lfs merge=lfs -text
